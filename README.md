@@ -16,6 +16,8 @@ This repository contains automated tests for room operations on the [Automation 
 
 - [Node.js](https://nodejs.org/) (version 14.x or higher)
 - [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
+- Install [playwright] using command npm init playwright@latest
+
 
 ## Setup
 
