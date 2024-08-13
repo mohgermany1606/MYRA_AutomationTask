@@ -21,17 +21,13 @@ This repository contains automated tests for room operations on the [Automation 
 
 1. **Clone the repository:**
     ```bash
-    git clone https://github.com/yourusername/room-operations-playwright.git
+    git clone https://github.com/mohgermany1606/MYRA_AutomationTask.git
     cd room-operations-playwright
     ```
 
 2. **Install dependencies:**
     ```bash
     npm install
-    ```
-    or
-    ```bash
-    yarn install
     ```
 
 3. **Configure Playwright:**
@@ -53,9 +49,9 @@ Negative Flow: Verifies that creating a room with invalid details results in an 
 2. Update Room - Positive and Negative Flow
 Positive Flow: Verifies that an existing room can be updated with valid details.
 Negative Flow: Verifies that updating a room with invalid details results in an error.
-3. Delete Room
+3. Delete Room :
 Verifies that a room can be deleted and ensures the room no longer appears in the list of available rooms.
-4. View Room List
+4. View Room List :
 Verifies that the room list is displayed accurately and all room details are consistent.
 Page Objects
 
@@ -73,23 +69,4 @@ Configuration
 
 playwright.config.js: The configuration file controls browser settings, base URL, and test reporting.
 javascript
-Copy code
-module.exports = {
-    testDir: './tests',
-    use: {
-        headless: false, // Set to true to run tests in headless mode
-        baseURL: 'https://automationintesting.online/#/admin',
-        browserName: 'chromium',
-        screenshot: 'only-on-failure',
-        video: 'retain-on-failure'
-    },
-    reporter: [['html', { open: 'never' }]], // Generates HTML report
-};
-Troubleshooting
-
-Room Not Found: If the test fails with "Room with number X not found in the list," ensure the room data is correct and that the selector is properly identifying the room elements.
-Element Not Visible: Use waitForSelector to ensure elements are fully loaded before interaction.
-Contributing
-
-If you wish to contribute to this project, feel free to fork the repository, make your changes, and submit a pull request.
 
