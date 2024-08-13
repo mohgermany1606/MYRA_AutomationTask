@@ -83,14 +83,14 @@ test.describe('Room Operations', () => {
     // Verify the room is no longer present in the list
     await roomPage.verifyRoomNotInList(roomData.validRoom.roomNumber);
 
-    //Verify administraor is able to verify list of rooms displayed 
-    await roomPage.viewRoomList();
-
+    
 });
 
 test('Verify Room List is Displayed Accurately', async ({ page }) => {
-    //Verify administraor is able to verify list of rooms displayed 
-    //await roomPage.viewRoomList();
+    
+//Verify administraor is able to verify list of rooms displayed 
+    await roomPage.viewRoomList();
+
 });
 
 });
