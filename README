@@ -1,0 +1,95 @@
+# Room Operations Test Automation
+
+## Overview
+
+This repository contains automated tests for room operations on the [Automation in Testing](https://automationintesting.online/) platform using Playwright. The tests include creating, updating, deleting, and viewing rooms, as well as verifying that the room list is displayed accurately.
+
+## Project Structure
+
+- **tests/roomOperations.spec.js**: Contains test cases for room operations, including creating, updating, deleting, and viewing rooms.
+- **pageObjects/RoomPage.js**: Page Object for room-related actions, encapsulating operations like creating, updating, deleting, and verifying rooms.
+- **pageObjects/LoginPage.js**: Page Object for the login page, handling login operations.
+- **fixtures/roomData.js**: Contains test data, including valid and invalid room details used in the tests.
+- **playwright.config.js**: Configuration file for Playwright, setting up test directories, browser options, and report generation.
+
+## Prerequisites
+
+- [Node.js](https://nodejs.org/) (version 14.x or higher)
+- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
+
+## Setup
+
+1. **Clone the repository:**
+    ```bash
+    git clone https://github.com/yourusername/room-operations-playwright.git
+    cd room-operations-playwright
+    ```
+
+2. **Install dependencies:**
+    ```bash
+    npm install
+    ```
+    or
+    ```bash
+    yarn install
+    ```
+
+3. **Configure Playwright:**
+   The Playwright configuration is set in `playwright.config.js`, which includes options for browser settings, headless mode, and report generation.
+
+## Running Tests
+
+To execute the tests, use the following commands:
+
+### Run All Tests
+npx playwright test
+
+
+Test Cases
+
+1. Create Room - Positive and Negative Flow
+Positive Flow: Verifies that a room can be created with valid details.
+Negative Flow: Verifies that creating a room with invalid details results in an error.
+2. Update Room - Positive and Negative Flow
+Positive Flow: Verifies that an existing room can be updated with valid details.
+Negative Flow: Verifies that updating a room with invalid details results in an error.
+3. Delete Room
+Verifies that a room can be deleted and ensures the room no longer appears in the list of available rooms.
+4. View Room List
+Verifies that the room list is displayed accurately and all room details are consistent.
+Page Objects
+
+RoomPage: Handles all interactions related to room operations (create, update, delete, view).
+LoginPage: Manages login actions for the admin user.
+Test Data
+
+The test data is managed in the fixtures/roomData.js file, which includes:
+
+loginData: Username and password for the admin user.
+validRoom: Data for creating a room successfully.
+invalidRoom: Data for creating a room with errors.
+updatedRoom: Data for updating an existing room.
+Configuration
+
+playwright.config.js: The configuration file controls browser settings, base URL, and test reporting.
+javascript
+Copy code
+module.exports = {
+    testDir: './tests',
+    use: {
+        headless: false, // Set to true to run tests in headless mode
+        baseURL: 'https://automationintesting.online/#/admin',
+        browserName: 'chromium',
+        screenshot: 'only-on-failure',
+        video: 'retain-on-failure'
+    },
+    reporter: [['html', { open: 'never' }]], // Generates HTML report
+};
+Troubleshooting
+
+Room Not Found: If the test fails with "Room with number X not found in the list," ensure the room data is correct and that the selector is properly identifying the room elements.
+Element Not Visible: Use waitForSelector to ensure elements are fully loaded before interaction.
+Contributing
+
+If you wish to contribute to this project, feel free to fork the repository, make your changes, and submit a pull request.
+
