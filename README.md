@@ -22,7 +22,7 @@ This repository contains automated tests for room operations on the [Automation 
 1. **Clone the repository:**
     ```bash
     git clone https://github.com/mohgermany1606/MYRA_AutomationTask.git
-    cd room-operations-playwright
+    
     ```
 
 2. **Install dependencies:**
@@ -68,5 +68,4 @@ updatedRoom: Data for updating an existing room.
 Configuration
 
 playwright.config.js: The configuration file controls browser settings, base URL, and test reporting.
-javascript
 
