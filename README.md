@@ -42,6 +42,9 @@ To execute the tests, use the following commands:
 ### Run All Tests
 npx playwright test
 
+### To see the report 
+npx playwright show-report
+
 
 Test Cases
 
@@ -63,10 +66,11 @@ Test Data
 
 The test data is managed in the fixtures/roomData.js file, which includes:
 
-loginData: Username and password for the admin user.
-validRoom: Data for creating a room successfully.
-invalidRoom: Data for creating a room with errors.
-updatedRoom: Data for updating an existing room.
+1. loginData: Username and password for the admin user.
+2. validRoom: Data for creating a room successfully.
+3. invalidRoom: Data for creating a room with errors.
+4. updatedRoom: Data for updating an existing room.
+
 Configuration
 
 playwright.config.js: The configuration file controls browser settings, base URL, and test reporting.
