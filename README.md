@@ -77,3 +77,6 @@ Configuration
 
 playwright.config.js: The configuration file controls browser settings, base URL, and test reporting.
 
+## Bug Report
+- **Bug Report/Bug Report_Hotel Booking.pdf**: Contains 4 different issues which were found during exploratory testing
+
