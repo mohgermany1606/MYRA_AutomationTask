@@ -15,7 +15,7 @@ This repository contains automated tests for room operations on the [Automation 
 ## Prerequisites
 
 - [Node.js](https://nodejs.org/) (version 14.x or higher)
-- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
+- [npm](https://www.npmjs.com/)
 - Install playwright using command-  npm init playwright@latest
 
 
@@ -58,10 +58,12 @@ Negative Flow: Verifies that updating a room with invalid details results in an 
 Verifies that a room can be deleted and ensures the room no longer appears in the list of available rooms.
 4. View Room List :
 Verifies that the room list is displayed accurately and all room details are consistent.
+
 Page Objects
 
-RoomPage: Handles all interactions related to room operations (create, update, delete, view).
-LoginPage: Manages login actions for the admin user.
+1. RoomPage: Handles all interactions related to room operations (create, update, delete, view).
+2. LoginPage: Manages login actions for the admin user.
+
 Test Data
 
 The test data is managed in the fixtures/roomData.js file, which includes:
