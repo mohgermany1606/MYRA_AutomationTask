@@ -14,10 +14,12 @@ This repository contains automated tests for room operations on the [Automation 
 
 ## Prerequisites
 
-- [Node.js](https://nodejs.org/) (version 14.x or higher)
+- [Node.js](https://nodejs.org/)
 - [npm](https://www.npmjs.com/)
-- Install playwright using command-  npm init playwright@latest
 
+- **Install playwright using command** 
+    ```bash
+    npm init playwright@latest
 
 ## Setup
 
