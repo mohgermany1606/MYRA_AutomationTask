@@ -4,7 +4,7 @@ module.exports = {
         password: 'password'
     },
     validRoom: {
-        roomNumber: 199,
+        roomNumber: 43432,
         type: 'Double',
         accessible: 'true',
         price: 153,
@@ -20,11 +20,10 @@ module.exports = {
         features: ["WiFi", "TV"]
     },
     updatedRoom: {
-        roomNumber: 199,
+        roomNumber: 43432,
         type: 'Single',
         accessible: false,
         price: 120,
-        //descriptionTextArea: "A compact single room for solo travelers.",
         features: ['Radio']
     }
 };

@@ -14,83 +14,85 @@ test.describe('Room Operations', () => {
     });
 
     test('Create Room - Positive and Negative Flow', async ({ page }) => {
-        // 1.Positive Test: Create Room with valid details
-
-        //Verify administrator is able to add new room
+        console.log('Executing positive create test case as below ---');
+        
+        // 1. Positive Test: Create Room with valid details
         await roomPage.createRoom(roomData.validRoom);
-        onsole.log(`Room with number "${validRoom.roomNumber}" is created successfully`);
-        //Verify newly created room appears in list of available rooms 
+        console.log(`Room with number "${roomData.validRoom.roomNumber}" is created successfully`);
+        
+        // Verify newly created room appears in the list of available rooms
         await roomPage.verifyRoomInList(roomData.validRoom);
 
-        // 2.Negative Test: Create Room with invalid details
+        console.log('Executing negative create test case as below ---');
+        
+        // 2. Negative Test: Create Room with invalid details
         await roomPage.createRoom(roomData.invalidRoom);
-        // Validating negative case using error locator for error message
+        
+        // Verify negative case using error locator for error message
         const errorLocator = page.locator('div.alert.alert-danger');
-        // Wait for the error message to be visible
-    try {
-        await errorLocator.waitFor({ state: 'visible', timeout: 5000 });
-        console.log('Create Room - Negative Test Passed: Error locator is present.');
-    } catch (error) {
-        console.log('Error locator is not present.'); // Add logging for debugging
-        throw new Error('Negative Test Failed: Error locator is not present for invalid input.');
-    
-}
+        
+        // Wait for the error locator to be visible
+        try {
+            await errorLocator.waitFor({ state: 'visible', timeout: 5000 });
+            console.log('Create Room - Negative Test Passed: Error locator is present.');
+        } catch (error) {
+            console.log('Error locator is not present.');
+            throw new Error('Negative Test Failed: Error locator is not present for invalid input.');
+        }
     });
-    
-     
-   test('Update Room - Positive and Negative Flow', async ({ page }) => {
 
-        //Click on added room row to edit
-           await roomPage.clickOnRoomRow(roomData.updatedRoom.roomNumber);
+    test('Update Room - Positive and Negative Flow', async ({ page }) => {
+        // Click on the added room row to edit
+        await roomPage.clickOnRoomRow(roomData.updatedRoom.roomNumber);
 
-         //Verify the clicked room details using room number 
-           await roomPage.verifyRoomLabel(roomData.updatedRoom.roomNumber);
+        // Verify the clicked room details using room number
+        await roomPage.verifyRoomLabel(roomData.updatedRoom.roomNumber);
+        console.log('Executing positive update test case as below ---');
+        
+        // 1. Positive Test: Verify administrator is able to edit details of the newly added room
+        await roomPage.updateRoom(roomData.updatedRoom);
+        console.log('Clicked the update button.');
+        console.log('Room details updated successfully.');
 
-         //1.Positive Test - Verify administrator is able to edit details of newly added room
-           await roomPage.updateRoom(roomData.updatedRoom);
-           console.log('Clicked the update button.');
-           console.log('Room details updated successfully.');
+        // Verify room label after updating the room details
+        await roomPage.verifyRoomLabel(roomData.updatedRoom.roomNumber);
 
-         //Verify administrator is able to verify room label bafter updating the room details
-          await roomPage.verifyRoomLabel(roomData.updatedRoom.roomNumber);
-
-
-           // 2.Negative Test: Verify error is displayed on updating details with invalid data
+        console.log('Executing negative update test case as below ---');
+        
+        // 2. Negative Test: Verify error is displayed on updating details with invalid data
         await roomPage.updateRoom(roomData.invalidRoom);
-        // Validating negative case using error locator for error message on update scree 
+        
+        // Verify negative case using error locator for error message on the update screen
         const errorLocator = page.locator('div.alert.alert-danger');
-    // Wait for the error message to be visible
-         try {
-        await errorLocator.waitFor({ state: 'visible', timeout: 5000 });
-        console.log('Update Room - Negative Test Passed: Error locator is present.');
-    } catch (error) {
-        console.log('Error locator is not present.'); // Add logging for debugging
-        throw new Error('Negative Test Failed: Error locator is not present for invalid input.');
-    
-}
-    
- });
+        
+        // Wait for the error message to be visible
+        try {
+            await errorLocator.waitFor({ state: 'visible', timeout: 5000 });
+            console.log('Update Room - Negative Test Passed: Error locator is present.');
+        } catch (error) {
+            console.log('Error locator is not present.');
+            throw new Error('Negative Test Failed: Error locator is not present for invalid input.');
+        }
+    });
 
- test('Delete Room ', async ({ page }) => {
-    //Click on Room Menu
+    test('Delete Room and Verify It Is Not Present in List', async ({ page }) => {
+        console.log('Executing delete test case as below ---');
+        
+        // Verify administrator is able to delete the added room
+        await roomPage.deleteRoom(roomData.validRoom.roomNumber);
 
-    ///Verify administrator is able to verify room label before clicking on it to delete
-    //await roomPage.verifyRoomLabel(roomData.validRoom.roomNumber);
+        // Verify the room is no longer present in the list
+        await roomPage.verifyRoomNotInList(roomData.validRoom.roomNumber);
+    });
 
-    //Verify administrator is able to delete the added room 
-    await roomPage.deleteRoom(roomData.validRoom.roomNumber);
+    test('View Room List', async ({ page }) => {
+        // 1. Verify administrator is able to view room list
+        const roomPage = new RoomPage(page);
 
-    // Verify the room is no longer present in the list
-    await roomPage.verifyRoomNotInList(roomData.validRoom.roomNumber);
+        // Navigate to the room listing page
+        await roomPage.navigateToRoomMenu();
 
-    
-});
-
-test('Verify Room List is Displayed Accurately', async ({ page }) => {
-    
-//Verify administraor is able to verify list of rooms displayed 
-    await roomPage.viewRoomList();
-
-});
-
+        // Call the viewRoomList method
+        await roomPage.viewRoomList();
+    });
 });
